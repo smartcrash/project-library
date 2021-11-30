@@ -14,6 +14,7 @@ module.exports = sequelize => {
   }
   Book.init(
     {
+      _id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       title: DataTypes.STRING,
       commentcount: {
         type: DataTypes.TINYINT,
@@ -37,6 +38,7 @@ module.exports = sequelize => {
     {
       sequelize,
       modelName: 'Book',
+      timestamps: true,
     }
   )
   return Book
