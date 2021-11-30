@@ -67,7 +67,7 @@ suite('Functional Tests', function () {
           .post('/api/books')
           .send({})
           .end(function (err, res) {
-            assert.equal(res.status, 422)
+            assert.equal(res.status, 200)
 
             assert.isString(res.text)
             assert.equal(res.text, 'missing required field title')
@@ -112,7 +112,7 @@ suite('Functional Tests', function () {
           .request(server)
           .get(`/api/books/${faker.datatype.number()}`)
           .end(function (err, res) {
-            assert.equal(res.status, 404)
+            assert.equal(res.status, 200)
 
             assert.isString(res.text)
             assert.equal(res.text, 'no book exists')
@@ -199,7 +199,7 @@ suite('Functional Tests', function () {
               .post(`/api/books/${_id}`)
               .send({})
               .end(function (err, res) {
-                assert.equal(res.status, 422)
+                assert.equal(res.status, 200)
 
                 assert.isString(res.text)
                 assert.equal(res.text, 'missing required field comment')
@@ -215,7 +215,7 @@ suite('Functional Tests', function () {
           .post(`/api/books/${faker.datatype.number()}`)
           .send({ comment: faker.lorem.sentence() })
           .end(function (err, res) {
-            assert.equal(res.status, 404)
+            assert.equal(res.status, 200)
 
             assert.isString(res.text)
             assert.equal(res.text, 'no book exists')
@@ -257,7 +257,7 @@ suite('Functional Tests', function () {
           .request(server)
           .delete(`/api/books/${faker.datatype.number()}`)
           .end(function (err, res) {
-            assert.equal(res.status, 404)
+            assert.equal(res.status, 200)
 
             assert.isString(res.text)
             assert.equal(res.text, 'no book exists')
